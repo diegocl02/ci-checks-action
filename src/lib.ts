@@ -194,7 +194,7 @@ export async function run(): Promise<void> {
 						})
 					}
 
-					core.info(`Posting annotations completions for "${title}" check`)
+					core.info(`Postingg annotations completions for "${title}" check`)
 					const checkObj = {
 						...getBaseInfo({ checkId }),
 						status: 'completed' as const,
