@@ -137,7 +137,7 @@ export async function run(): Promise<void> {
 	}
 
 	async function postCheckAsync(info: GithubCheckInfo.Any) {
-		console.log('Run Id')
+		console.log('Run Id', info)
 		const { data: { id: checkId } } = 'check_run_id' in info
 			? await githubClient.checks.update(info)
 			: await githubClient.checks.create(info)
