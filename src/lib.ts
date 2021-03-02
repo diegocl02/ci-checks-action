@@ -81,8 +81,8 @@ export function parse(generalCheckJSON: string, changedFiles: string[] | undefin
 
 					return {
 						path: filePath.replace(`${process.env.GITHUB_WORKSPACE}/`, ''),
-						title: detail.title?.replace(/`/g, ""),
-						message: detail.message.replace(/`/g, ""),
+						title: detail.title?.replace(/`/g, "'"),
+						message: detail.message.replace(/`/g, "'"),
 						start_line: detail.startLine ?? 0,
 						start_column: detail.startColumn,
 						end_line: detail.endLine ?? 0,
@@ -202,7 +202,6 @@ export async function run(): Promise<void> {
 						completed_at: new Date().toISOString() as string,
 						output: { title, summary, text, annotations: last(annotationBatches) }
 					}
-					core.info(`test:  ${JSON.stringify(checkObj)}`)
 					await postCheckAsync(checkObj)
 
 					/*if (push) {
