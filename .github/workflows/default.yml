@@ -41,7 +41,7 @@ jobs:
         continue-on-error: true
         
       - name: Annotate Checks
-        uses: ./
+        uses: diegocl02/ci-checks-action@test
         with:
           ghToken: ${{ secrets.GITHUB_TOKEN }}
           checks: '[
