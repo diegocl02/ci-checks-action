@@ -199,6 +199,7 @@ function run() {
                 }
                 catch (e) {
                     const msg = `Error processing requested check "${check.name}"\n\t${'stack' in e ? e.stack : 'message' in e ? e.message : String(e)}\n`;
+                    core.error(`Debuggin error: ${e.stack} ${e.message} ${JSON.stringify(e)}`);
                     core.error(msg);
                     core.setFailed(msg);
                 }
