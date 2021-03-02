@@ -89,8 +89,8 @@ function parse(generalCheckJSON, changedFiles, checkName) {
                 var _a, _b, _c;
                 return {
                     path: filePath.replace(`${process.env.GITHUB_WORKSPACE}/`, ''),
-                    title: (_a = detail.title) === null || _a === void 0 ? void 0 : _a.replace(/`/g, ""),
-                    message: detail.message.replace(/`/g, ""),
+                    title: (_a = detail.title) === null || _a === void 0 ? void 0 : _a.replace(/`/g, "'"),
+                    message: detail.message.replace(/`/g, "'"),
                     start_line: (_b = detail.startLine, (_b !== null && _b !== void 0 ? _b : 0)),
                     start_column: detail.startColumn,
                     end_line: (_c = detail.endLine, (_c !== null && _c !== void 0 ? _c : 0)),
@@ -181,7 +181,6 @@ function run() {
                         }
                         core.info(`Postinggg annotations completions for "${title}" check`);
                         const checkObj = Object.assign(Object.assign({}, getBaseInfo({ checkId })), { status: 'completed', conclusion, completed_at: new Date().toISOString(), output: { title, summary, text, annotations: utility_1.last(annotationBatches) } });
-                        core.info(`test:  ${JSON.stringify(checkObj)}`);
                         yield postCheckAsync(checkObj);
                         /*if (push) {
                             core.info(`Processing last batch of "${title}" check`)
