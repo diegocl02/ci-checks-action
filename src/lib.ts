@@ -186,7 +186,7 @@ export async function run(): Promise<void> {
 					let batchIndex = 1
 					for (const annotationBatch of take(annotationBatches, numBatches - 1)) {
 						// eslint-disable-next-line fp/no-mutation
-						const batchMessage = `Processing annotations batch ${batchIndex++} of "${title}" check`
+						const batchMessage = `Processinggg annotations batch ${batchIndex++} of "${title}" check`
 						core.info(batchMessage)
 						await postCheckAsync({
 							...getBaseInfo({ checkId }), status: 'in_progress',
@@ -194,7 +194,7 @@ export async function run(): Promise<void> {
 						})
 					}
 
-					core.info(`Postingg annotations completions for "${title}" check`)
+					core.info(`Postinggg annotations completions for "${title}" check`)
 					const checkObj = {
 						...getBaseInfo({ checkId }),
 						status: 'completed' as const,
