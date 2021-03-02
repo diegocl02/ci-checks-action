@@ -83,8 +83,8 @@ export function parse(generalCheckJSON: string, changedFiles: string[] | undefin
 
 					return {
 						path: filePath.replace(`${process.env.GITHUB_WORKSPACE}/`, ''),
-						title: detail.title?.replace(/`/g, "'"),
-						message: detail.message.replace(/`/g, "'"),
+						title: detail.title,
+						message: detail.message,
 						start_line: startLine,
 						end_line: endLine,
 						...startLine === endLine

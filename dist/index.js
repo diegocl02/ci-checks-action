@@ -6156,11 +6156,11 @@ function parse(generalCheckJSON, changedFiles, checkName) {
             // console.log(`Processing ${checkName} check file "${filePath}"`)
             const fileResult = kv[1];
             return fileResult.details.map(detail => {
-                var _a, _b, _c;
+                var _a, _b;
                 // console.log(`Processing "${checkName}" check\n\tfile "${filePath}"\n\tdetail "${JSON.stringify(detail)}"`)
                 const startLine = (_a = detail.startLine, (_a !== null && _a !== void 0 ? _a : 0));
                 const endLine = (_b = detail.endLine, (_b !== null && _b !== void 0 ? _b : 0));
-                return Object.assign(Object.assign({ path: filePath.replace(`${process.env.GITHUB_WORKSPACE}/`, ''), title: (_c = detail.title) === null || _c === void 0 ? void 0 : _c.replace(/`/g, "'"), message: detail.message.replace(/`/g, "'"), start_line: startLine, end_line: endLine }, startLine === endLine
+                return Object.assign(Object.assign({ path: filePath.replace(`${process.env.GITHUB_WORKSPACE}/`, ''), title: detail.title, message: detail.message, start_line: startLine, end_line: endLine }, startLine === endLine
                     ? { start_column: detail.startColumn, end_column: detail.endColumn }
                     : {}), { annotation_level: detail.category });
             });
