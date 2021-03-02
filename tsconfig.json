@@ -12,6 +12,7 @@
 		"resolveJsonModule": true,
 		"skipLibCheck": true
 	},
+	"compileOnSave": true,
 	"exclude": [],
 	"include": [
 		"./src",

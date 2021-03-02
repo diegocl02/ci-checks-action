@@ -1,7 +1,7 @@
 # ignore dist in a way that allows the following negated blobs to work
-dist/*
-!dist/index.js
-!dist/check-general.schema.json
+# dist/*
+# !dist/index.js
+# !dist/check-general.schema.json
 node_modules/
 *-report.json
 *.tsbuildinfo
