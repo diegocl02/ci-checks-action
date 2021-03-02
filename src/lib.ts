@@ -137,6 +137,7 @@ export async function run(): Promise<void> {
 	}
 
 	async function postCheckAsync(info: GithubCheckInfo.Any) {
+		console.log('Run Id')
 		const { data: { id: checkId } } = 'check_run_id' in info
 			? await githubClient.checks.update(info)
 			: await githubClient.checks.create(info)
@@ -201,7 +202,7 @@ export async function run(): Promise<void> {
 						completed_at: new Date().toISOString() as string,
 						output: { title, summary, text, annotations: last(annotationBatches) }
 					}
-					console.log(`test: `, checkObj)
+					console.log(`test: `, JSON.stringify(checkObj))
 					await postCheckAsync(checkObj)
 
 					/*if (push) {
