@@ -131,13 +131,13 @@ export async function run(): Promise<void> {
 				per_page: fetchPerPage,
 			})
 			// eslint-disable-next-line fp/no-mutation
-			changedFiles = changedFiles.concat(response.data.filter(f => f.status !== "removed").map(f => f.filename))
+			changedFiles = changedFiles.concat(response.data.filter((f: any) => f.status !== "removed").map((f: any) => f.filename))
 		}
 		return changedFiles.map(fName => path.resolve(fName))
 	}
 
 	async function postCheckAsync(info: GithubCheckInfo.Any) {
-		console.log('Run Id')
+		core.info(`Run Id ${JSON.stringify(info)}`)
 		const { data: { id: checkId } } = 'check_run_id' in info
 			? await githubClient.checks.update(info)
 			: await githubClient.checks.create(info)
@@ -194,7 +194,7 @@ export async function run(): Promise<void> {
 						})
 					}
 
-					core.info(`Posting annotations completions for "${title}" check`)
+					core.info(`Postingg annotations completions for "${title}" check`)
 					const checkObj = {
 						...getBaseInfo({ checkId }),
 						status: 'completed' as const,
@@ -202,7 +202,7 @@ export async function run(): Promise<void> {
 						completed_at: new Date().toISOString() as string,
 						output: { title, summary, text, annotations: last(annotationBatches) }
 					}
-					console.log(`test: `, JSON.stringify(checkObj))
+					core.info(`test:  ${JSON.stringify(checkObj)}`)
 					await postCheckAsync(checkObj)
 
 					/*if (push) {
